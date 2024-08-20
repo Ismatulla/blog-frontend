@@ -22,7 +22,7 @@ export const RegisterField: React.FC<FormFieldProps> = ({
   error,
   type = "text",
 }) => (
-  <FormControl isInvalid={!!error}>
+  <FormControl isInvalid={!!error} >
     <FormLabel htmlFor={name}>{label}</FormLabel>
     <Input
       id={name}

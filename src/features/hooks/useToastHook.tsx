@@ -25,7 +25,7 @@ const useToastHook = () => {
 
   const successToast = useCallback(
     (options: Omit<UseToastOptions, "status">) => {
-      showToast({ ...options, status: "success" });
+      showToast({ ...options, status: "success", position: "top-right" });
     },
     [showToast]
   );
