@@ -8,6 +8,7 @@ import { extendTheme } from "@chakra-ui/react";
 import Login from "./features/users/Login.tsx";
 
 import SignUp from "./features/users/SignUp.tsx";
+import Blog from "./features/components/Blog.tsx";
 
 const colors = {
   brand: {
@@ -21,7 +22,7 @@ const theme = extendTheme({ colors });
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <Blog />,
   },
   {
     path: "/login",
