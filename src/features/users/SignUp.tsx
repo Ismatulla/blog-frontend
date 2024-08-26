@@ -93,7 +93,7 @@ const SignUp: React.FC = () => {
           bgColor={bgColor}
         </VStack>
       </form>
-      <Text>
+      <Text sx={{ marginTop: 4 }}>
         Already have an account?{" "}
         <Link
           to="/login"
