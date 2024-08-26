@@ -12,6 +12,7 @@ import Navbar from "./features/components/Navbar.tsx";
 import Error from "./features/components/Error.tsx";
 import Home from "./pages/Home.tsx";
 import Layout from "./features/components/Layout.tsx";
+import Blog from "./features/components/Blog.tsx";
 
 const colors = {
   brand: {
