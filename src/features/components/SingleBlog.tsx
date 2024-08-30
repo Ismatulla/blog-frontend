@@ -3,19 +3,33 @@ import SingleComment from "./comments/SingleComment";
 
 const SingleBlog = () => {
   return (
-    <Container maxW="container.xl" p={5}>
-      <Heading fontWeight="700" size="2xl" textAlign="center">
+    <Container
+      maxW="1080px"
+      mt={10}
+      background="brand.600"
+      p={20}
+      borderRadius={20}>
+      <Box>
+        {" "}
+        <img
+          src="../../../public/assets/img-post.jpg"
+          alt="not found"
+          style={{ borderRadius: "20px", width: "100%" }}
+        />
+      </Box>
+      <Heading fontWeight="700" size="2xl" textAlign="center" mt={20}>
         The Art of the Start
       </Heading>
-      <Box display="flex" alignItems="center" gap={2}>
+      <Box display="flex" alignItems="center" gap={4} mt={20}>
         <img
           src="../../../public/assets/user-small.jpg"
           alt="not found"
           width="48px"
+          style={{ borderRadius: "50%" }}
         />{" "}
         <span
           style={{
-            fontSize: "3rem",
+            fontSize: "2.4rem",
             fontFamily: "Roboto",
             fontWeight: "bold",
           }}>
@@ -23,7 +37,7 @@ const SingleBlog = () => {
         </span>
         <span
           style={{
-            fontSize: "3rem",
+            fontSize: "2.4rem",
             fontFamily: "Roboto",
             fontWeight: "bold",
           }}>
@@ -31,10 +45,11 @@ const SingleBlog = () => {
         </span>
         <Badge
           borderRadius="4px"
-          fontSize="2rem"
+          fontSize="1.4rem"
           fontFamily="Roboto"
           fontWeight="bold"
-          size="lg">
+          size="lg"
+          padding={4}>
           Category
         </Badge>
       </Box>
@@ -48,18 +63,7 @@ const SingleBlog = () => {
           are both visually appealing and highly intuitive.
         </Text>
       </Box>
-      <Box
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        margin="2rem 0">
-        {" "}
-        <img
-          src="../../../public/assets/img-post.jpg"
-          alt="not found"
-          width="800px"
-        />
-      </Box>
+
       <Text fontSize="2rem">
         In the ever-evolving world of web design, the concept of minimalism has
         gained significant traction. Minimalism in web design is not just about

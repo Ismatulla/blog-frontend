@@ -2,10 +2,14 @@ import { Box, Text, Container } from "@chakra-ui/react";
 
 const SingleComment = () => {
   return (
-    <Container maxW="container.xl" marginLeft="2rem">
-      <Box display="flex" justifyContent="space-between" alignItems="center">
+    <Container maxW="container.xl" marginLeft="2rem" mt={20}>
+      <Box
+        display="flex"
+        justifyContent="space-between"
+        alignItems="center"
+        mb={10}>
         {" "}
-        <Text fontSize="3rem" fontFamily="Roboto" fontWeight="bold">
+        <Text fontSize="2.4rem" fontFamily="Roboto" fontWeight="bold">
           Author
         </Text>
         <Box display="flex" gap={6} alignItems="center" justifyContent="center">
@@ -43,7 +47,7 @@ const SingleComment = () => {
           </Box>
         </Box>
       </Box>
-      <Text fontSize="2.2rem" fontFamily="Roboto">
+      <Text fontSize="2rem" fontFamily="Roboto">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, saepe
         nam blanditiis, magni natus in maxime dolor veniam est nostrum
         laboriosam corrupti libero vel inventore possimus ad tempora aliquam quo
