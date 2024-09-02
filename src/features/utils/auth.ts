@@ -1,5 +1,5 @@
 import instance from "./instance";
-import { LoginData, RegisterData } from "../schemas/auth";
+import { LoginData, RegisterData, CreatePostData } from "../schemas/auth";
 
 export const registerUser = async (data: RegisterData) => {
   const response = await instance.post("/blogpost/register", data);
@@ -8,5 +8,10 @@ export const registerUser = async (data: RegisterData) => {
 
 export const loginUser = async (data: LoginData) => {
   const response = await instance.post("/blogpost/login", data);
+  return response.data;
+};
+
+export const createPost = async (data: CreatePostData) => {
+  const response = await instance.post("/blogpost/createPost", data);
   return response.data;
 };
