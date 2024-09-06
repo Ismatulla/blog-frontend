@@ -32,3 +32,8 @@ export const CreatePostSchema = z.object({
 });
 export type CreatePostData = z.infer<typeof CreatePostSchema>;
 export type LoginData = z.infer<typeof LoginSchema>;
+
+export const CreateCommentSchema = z.object({
+  content: z.string().min(1, { message: "content is required" }),
+});
+export type CreateCommentData = z.infer<typeof CreateCommentSchema>;

@@ -13,8 +13,10 @@ import {
 import logo from "../../assets/navlogo.svg";
 import user from "../../assets/user.jpg";
 import CreatePost from "../components/modals/CreatePost";
+import { useNavigate } from "react-router-dom";
 const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const navigate = useNavigate();
   const profiles: string[] = [
     "Profile",
     "New Post",
@@ -27,6 +29,9 @@ const Navbar = () => {
   const handleClickNavbar = (text: string) => {
     if (text === "New Post") {
       onOpen();
+    }
+    if (text === "Login") {
+      navigate("/login");
     }
   };
   return (

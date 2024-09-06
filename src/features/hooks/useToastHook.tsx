@@ -47,6 +47,7 @@ const useToastHook = () => {
         duration: 9000,
         isClosable: true,
         position: "top-right",
+        
       });
     },
     [showToast]

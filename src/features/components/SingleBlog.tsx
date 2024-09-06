@@ -1,7 +1,51 @@
-import { Badge, Box, Container, Heading, Text } from "@chakra-ui/react";
+import {
+  Badge,
+  Box,
+  Button,
+  Container,
+  FormControl,
+  FormErrorMessage,
+  Heading,
+  Text,
+  Textarea,
+} from "@chakra-ui/react";
 import SingleComment from "./comments/SingleComment";
+import { useState } from "react";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { CreateCommentData, CreateCommentSchema } from "../schemas/auth";
+import { zodResolver } from "@hookform/resolvers/zod";
 
-const SingleBlog = () => {
+type Post = {
+  author: {
+    email: string;
+    username: string;
+  };
+  category: string;
+  content: string;
+  title: string;
+  createdAt: string;
+};
+type SingleBlogProps = {
+  post: Post;
+};
+
+const SingleBlog: React.FC<SingleBlogProps> = ({ post }) => {
+  const [comment, setComment] = useState<boolean>(false);
+  const onToggleComment = () => {
+    setComment(!comment);
+  };
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<CreateCommentData>({
+    resolver: zodResolver(CreateCommentSchema),
+  });
+
+  const onCommentPost: SubmitHandler<CreateCommentData> = async (data) => {
+    console.log(data);
+  };
   return (
     <Container
       maxW="1080px"
@@ -18,7 +62,7 @@ const SingleBlog = () => {
         />
       </Box>
       <Heading fontWeight="700" size="2xl" textAlign="center" mt={20}>
-        The Art of the Start
+        {post?.title}
       </Heading>
       <Box display="flex" alignItems="center" gap={4} mt={20}>
         <img
@@ -29,19 +73,20 @@ const SingleBlog = () => {
         />{" "}
         <span
           style={{
-            fontSize: "2.4rem",
+            fontSize: "2rem",
             fontFamily: "Roboto",
             fontWeight: "bold",
           }}>
-          Author
+          {post?.author?.username}
         </span>
         <span
           style={{
-            fontSize: "2.4rem",
+            fontSize: "1.6rem",
             fontFamily: "Roboto",
             fontWeight: "bold",
+            color: "rgba(0, 0, 0, 0.6)",
           }}>
-          time posted
+          {new Date(post?.createdAt).toLocaleDateString("en-US")}
         </span>
         <Badge
           borderRadius="4px"
@@ -50,28 +95,12 @@ const SingleBlog = () => {
           fontWeight="bold"
           size="lg"
           padding={4}>
-          Category
+          {post?.category}
         </Badge>
       </Box>
       <Box marginTop="1.25rem">
-        <Text fontSize="2rem">
-          In the ever-evolving world of web design, the concept of minimalism
-          has gained significant traction. Minimalism in web design is not just
-          about stripping away unnecessary elements, but rather about creating a
-          harmonious balance between form and function. By embracing the
-          principles of minimalism, designers can craft digital experiences that
-          are both visually appealing and highly intuitive.
-        </Text>
+        <Text fontSize="2rem">{post?.content}</Text>
       </Box>
-
-      <Text fontSize="2rem">
-        In the ever-evolving world of web design, the concept of minimalism has
-        gained significant traction. Minimalism in web design is not just about
-        stripping away unnecessary elements, but rather about creating a
-        harmonious balance between form and function. By embracing the
-        principles of minimalism, designers can craft digital experiences that
-        are both visually appealing and highly intuitive.
-      </Text>
       <Box display="flex" gap={6} my={12}>
         {" "}
         <Box width="36px" cursor="pointer">
@@ -104,7 +133,7 @@ const SingleBlog = () => {
             />
           </svg>
         </Box>
-        <Box width="36px" cursor="pointer">
+        <Box width="36px" cursor="pointer" onClick={onToggleComment}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -119,6 +148,35 @@ const SingleBlog = () => {
             />
           </svg>
         </Box>
+        <form onSubmit={handleSubmit(onCommentPost)} style={{ width: "100%" }}>
+          <FormControl
+            isInvalid={!!errors.content}
+            display={comment ? "flex" : "none"}
+            flexDirection="column"
+            alignItems="end">
+            <Textarea
+              fontSize="1.5rem"
+              placeholder="Write a comment ..."
+              border="2px solid teal"
+              {...register("content")}
+            />
+            <FormErrorMessage fontSize="1.5rem">
+              {errors.content?.message}
+            </FormErrorMessage>
+            <Button
+              disabled={isSubmitting}
+              fontSize="1.5rem"
+              padding="2rem"
+              colorScheme="teal"
+              width="full"
+              type="submit"
+              maxW={40}
+              borderRadius={41}
+              mt={4}>
+              Submit
+            </Button>
+          </FormControl>
+        </form>
       </Box>
       <SingleComment />
     </Container>

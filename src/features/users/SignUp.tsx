@@ -45,7 +45,7 @@ const SignUp: React.FC = () => {
   const onSubmit: SubmitHandler<RegisterData> = async (data) => {
     try {
       const response = await registerUser(data);
-      console.log(response);
+      localStorage.setItem("token", response?.token);
       navigate("/");
       successToast({ description: "User registered successfully" });
     } catch (error) {
@@ -83,6 +83,8 @@ const SignUp: React.FC = () => {
             />
           ))}
           <Button
+            padding="2rem"
+            fontSize="2rem"
             colorScheme="teal"
             width="full"
             type="submit"
@@ -93,7 +95,7 @@ const SignUp: React.FC = () => {
           bgColor={bgColor}
         </VStack>
       </form>
-      <Text sx={{ marginTop: 4 }}>
+      <Text sx={{ marginTop: 4 }} fontSize="2rem">
         Already have an account?{" "}
         <Link
           to="/login"

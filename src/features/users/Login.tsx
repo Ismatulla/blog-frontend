@@ -41,6 +41,7 @@ const Login: React.FC = () => {
   const onSubmit: SubmitHandler<LoginData> = async (data) => {
     try {
       const response = await loginUser(data);
+      localStorage.setItem("token", response?.token);
       console.log(response);
       navigate("/");
       successToast({ description: "User logged in successfully" });
@@ -79,6 +80,8 @@ const Login: React.FC = () => {
             />
           ))}
           <Button
+            fontSize="1.5rem"
+            padding="2rem"
             colorScheme="teal"
             width="full"
             type="submit"
@@ -89,7 +92,7 @@ const Login: React.FC = () => {
           bgColor={bgColor}
         </VStack>
       </form>
-      <Text sx={{marginTop: 4}}>
+      <Text sx={{ marginTop: 4 }} fontSize="2rem">
         You don't have an account?{" "}
         <Link
           to="/signup"

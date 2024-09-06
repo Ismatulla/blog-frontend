@@ -15,3 +15,8 @@ export const createPost = async (data: CreatePostData) => {
   const response = await instance.post("/blogpost/createPost", data);
   return response.data;
 };
+
+export const getAllPosts = async () => {
+  const response = await instance.get("/blogpost/posts");
+  return response.data;
+};

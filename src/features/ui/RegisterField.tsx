@@ -22,14 +22,19 @@ export const RegisterField: React.FC<FormFieldProps> = ({
   error,
   type = "text",
 }) => (
-  <FormControl isInvalid={!!error} >
-    <FormLabel htmlFor={name}>{label}</FormLabel>
+  <FormControl isInvalid={!!error}>
+    <FormLabel htmlFor={name} fontSize="2rem">
+      {label}
+    </FormLabel>
+
     <Input
+      padding="2rem"
       id={name}
       type={type}
+      fontSize="1.5rem"
       {...register(name)}
       placeholder={`Enter your ${label.toLowerCase()}`}
     />
-    <FormErrorMessage>{error}</FormErrorMessage>
+    <FormErrorMessage fontSize="1.5rem">{error}</FormErrorMessage>
   </FormControl>
 );
