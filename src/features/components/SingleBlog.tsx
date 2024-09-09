@@ -48,10 +48,10 @@ const SingleBlog: React.FC<SingleBlogProps> = ({ post }) => {
   };
   return (
     <Container
-      maxW="1080px"
+      maxW="480px"
       mt={10}
       background="brand.600"
-      p={20}
+      p={10}
       borderRadius={20}>
       <Box>
         {" "}
@@ -61,7 +61,7 @@ const SingleBlog: React.FC<SingleBlogProps> = ({ post }) => {
           style={{ borderRadius: "20px", width: "100%" }}
         />
       </Box>
-      <Heading fontWeight="700" size="2xl" textAlign="center" mt={20}>
+      <Heading fontWeight="700" size="xl" textAlign="center" mt={10}>
         {post?.title}
       </Heading>
       <Box display="flex" alignItems="center" gap={4} mt={20}>
